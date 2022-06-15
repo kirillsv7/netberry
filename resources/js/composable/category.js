@@ -5,7 +5,7 @@ export default function useCategory() {
     const categories = ref({})
 
     const getCategories = async () => {
-        categories.value = (await axios.get('/api/category')).data
+        categories.value = (await axios.get('/api/category')).data.data
     }
 
     return {

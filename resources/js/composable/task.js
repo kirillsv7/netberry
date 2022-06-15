@@ -10,7 +10,7 @@ export default function useTask() {
     const errors = ref({})
 
     const getTasks = async () => {
-        tasks.value = (await axios.get('/api/task')).data
+        tasks.value = (await axios.get('/api/task')).data.data
     }
 
     const storeTask = async () => {
