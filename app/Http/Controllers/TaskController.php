@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskStoreRequest;
 use App\Models\Task;
-use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
@@ -16,27 +15,17 @@ class TaskController extends Controller
                    ->get();
     }
 
-
     public function store(TaskStoreRequest $request)
     {
-        return Task::query()->create($request->validated());
+        $task = Task::create($request->only('name'));
+        $task->categories()->attach($request->input('categories'));
+        return $task;
     }
 
-
-    public function show($id)
+    public function destroy(Task $task)
     {
-        //
-    }
+        $task->delete();
 
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-    public function destroy($id)
-    {
-        //
+        return response()->noContent();
     }
 }

@@ -25,7 +25,7 @@ class TaskStoreRequest extends FormRequest
     {
         return [
             'name'        => ['required', 'string'],
-            'category_id' => ['required', 'integer', 'exists:category,id'],
+            'categories' => ['required', 'array'],
         ];
     }
 }
