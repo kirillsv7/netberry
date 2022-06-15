@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         Task::factory()->count(15)->create();
 
         foreach (Task::all() as $task) {
-            $task->categories()->attach(Category::all()->random(rand(1, 3)));
+            $task->categories()->attach(Category::all()->random(rand(1, 2)));
         }
     }
 }
