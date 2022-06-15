@@ -24,8 +24,16 @@ class TaskStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'        => ['required', 'string'],
+            'name'       => ['required', 'string'],
             'categories' => ['required', 'array'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Task name is required',
+            'categories.required' => 'Check at least one category',
         ];
     }
 }
